@@ -2,110 +2,116 @@ package es.iesmz;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class EmpleadoBRTests {
 
     @BeforeEach
-    void setUp() {
-        System.out.println("Ejecutar prueba");
+    public void antesDeCadaTest() {
+        System.out.println("Ejecuta Prueba");
+    }
+
+    // -------- SALARIO NETO --------
+
+    @Test
+    public void testSalarioNeto1() {
+        assertEquals(1640, EmpleadoBR.calculaSalarioNeto(2000), 0.01);
     }
 
     @Test
-    void testCalculaSalarioNeto_2000() {
-        assertEquals(1640f, EmpleadoBR.calcularSalarioNeto(2000f), 0.01f);
+    public void testSalarioNeto2() {
+        assertEquals(1230, EmpleadoBR.calculaSalarioNeto(1500), 0.01);
     }
 
     @Test
-    void testCalculaSalarioNeto_1500() {
-        assertEquals(1230f, EmpleadoBR.calcularSalarioNeto(1500f), 0.01f);
+    public void testSalarioNeto3() {
+        assertEquals(1259.9916f, EmpleadoBR.calculaSalarioNeto(1499.99f), 0.01);
     }
 
     @Test
-    void testCalulaSalarioNeto_1499_99(){
-        assertEquals(1259.9916f, EmpleadoBR.calcularSalarioNeto(1499.99f), 0.01f);
+    public void testSalarioNeto4() {
+        assertEquals(1050, EmpleadoBR.calculaSalarioNeto(1250), 0.01);
     }
 
     @Test
-    void testCalculaSalarioNeto_1250(){
-        assertEquals(1050f, EmpleadoBR.calcularSalarioNeto(1250f), 0.01f);
+    public void testSalarioNeto5() {
+        assertEquals(840, EmpleadoBR.calculaSalarioNeto(1000), 0.01);
     }
 
     @Test
-    void testCalulaSalarioNeto_1000(){
-        assertEquals(1000f, EmpleadoBR.calcularSalarioNeto(1000f), 0.01f);
+    public void testSalarioNeto6() {
+        assertEquals(999.99f, EmpleadoBR.calculaSalarioNeto(999.99f), 0.01);
     }
 
     @Test
-    void testCalculaSalarioNeto_999_99(){
-        assertEquals(999.99f, EmpleadoBR.calcularSalarioNeto(999.99f), 0.01f);
+    public void testSalarioNeto7() {
+        assertEquals(500, EmpleadoBR.calculaSalarioNeto(500), 0.01);
     }
 
     @Test
-    void testCalculaSalarioNeto_500(){
-        assertEquals(500f, EmpleadoBR.calcularSalarioNeto(500f), 0.01f);
+    public void testSalarioNeto8() {
+        assertEquals(0, EmpleadoBR.calculaSalarioNeto(0), 0.01);
     }
 
     @Test
-    void testCalculaSalarioNeto_0(){
-        assertEquals(0f, EmpleadoBR.calcularSalarioNeto(0f), 0.01f);
+    public void testSalarioNeto9() {
+        assertEquals(-1, EmpleadoBR.calculaSalarioNeto(-1), 0.01);
+    }
+
+    // -------- SALARIO BRUTO --------
+
+    @Test
+    public void testBruto1() {
+        assertEquals(1360, EmpleadoBR.calculaSalarioBruto(TipoEmpleado.vendedor, 2000, 8), 0.01);
     }
 
     @Test
-    void testCalculaSalarioNeto_negativo(){
-        assertEquals(-1f, EmpleadoBR.calcularSalarioNeto(-1f), 0.01f);
+    public void testBruto2() {
+        assertEquals(1260, EmpleadoBR.calculaSalarioBruto(TipoEmpleado.vendedor, 1500, 3), 0.01);
     }
 
     @Test
-    void testCalculaSalarioBruto_vendedor_2000_8h(){
-        assertEquals(1360f, EmpleadoBR.calcularSalarioBruto(TipoEmpleado.vendedor, 2000f, 8f), 0.01f);
-    }
-    @Test
-    void testCalculaSalarioBruto_vendedor_1500_3h(){
-        assertEquals(1260f, EmpleadoBR.calcularSalarioBruto(TipoEmpleado.vendedor, 1500.0f, 3f), 0.01f);
+    public void testBruto3() {
+        assertEquals(1100, EmpleadoBR.calculaSalarioBruto(TipoEmpleado.vendedor, 1499.99f, 0), 0.01);
     }
 
     @Test
-    void testCalculaSalarioBruto_vendedor_1499_99_0h(){
-        assertEquals(1110f, EmpleadoBR.calcularSalarioBruto(TipoEmpleado.vendedor, 1499.99f, 0f), 0.01f);
+    public void testBruto4() {
+        assertEquals(1760, EmpleadoBR.calculaSalarioBruto(TipoEmpleado.encargado, 1250, 8), 0.01);
     }
 
     @Test
-    void testCalculaSalarioBruto_encargado_1250_8h(){
-        assertEquals(1760f, EmpleadoBR.calcularSalarioBruto(TipoEmpleado.encargado, 1250f, 8f), 0.01f);
+    public void testBruto5() {
+        assertEquals(1600, EmpleadoBR.calculaSalarioBruto(TipoEmpleado.encargado, 1000, 0), 0.01);
     }
 
     @Test
-    void testCalculaSalarioBruto_encargado_1000_0h(){
-        assertEquals(1600f, EmpleadoBR.calcularSalarioBruto(TipoEmpleado.encargado, 1000f, 0f), 0.01f);
+    public void testBruto6() {
+        assertEquals(1560, EmpleadoBR.calculaSalarioBruto(TipoEmpleado.encargado, 999.99f, 3), 0.01);
     }
 
     @Test
-    void testCalculaSalarioBruto_encargado_999_99_3h(){
-        assertEquals(1560f, EmpleadoBR.calcularSalarioBruto(TipoEmpleado.encargado, 999.99f, 3f), 0.01f);
+    public void testBruto7() {
+        assertEquals(1500, EmpleadoBR.calculaSalarioBruto(TipoEmpleado.encargado, 500, 0), 0.01);
     }
 
     @Test
-    void testCalculaSalarioBruto_encargado_500_0h(){
-        assertEquals(1500f, EmpleadoBR.calcularSalarioBruto(TipoEmpleado.encargado, 500.0f, 0f), 0.01f);
+    public void testBruto8() {
+        assertEquals(1660, EmpleadoBR.calculaSalarioBruto(TipoEmpleado.encargado, 0, 8), 0.01);
     }
 
     @Test
-    void testCalculaSalarioBruto_encargado_0_8h(){
-        assertEquals(1660f, EmpleadoBR.calcularSalarioBruto(TipoEmpleado.encargado, 0f, 8f), 0.01f);
+    public void testBruto9() {
+        assertEquals(-1, EmpleadoBR.calculaSalarioBruto(TipoEmpleado.vendedor, -1, 8), 0.01);
     }
 
     @Test
-    void testCalculaSalarioBruto_vendedor_negativo_ventas(){
-        assertEquals(-1f, EmpleadoBR.calcularSalarioBruto(TipoEmpleado.vendedor, -1f, 8f), 0.01f);
-    }
-    @Test
-    void testCalculaSalarioBruto_vendedor_negativo_horas(){
-        assertEquals(-1f, EmpleadoBR.calcularSalarioBruto(TipoEmpleado.vendedor, 1500f, -1f), 0.01f);
+    public void testBruto10() {
+        assertEquals(-1, EmpleadoBR.calculaSalarioBruto(TipoEmpleado.vendedor, 1500, -1), 0.01);
     }
 
     @Test
-    void testCalculaSalarioBruto_null_tipo(){
-        assertEquals(-1f, EmpleadoBR.calcularSalarioBruto(null, 1500f, 8f), 0.01f);
+    public void testBruto11() {
+        assertEquals(-1, EmpleadoBR.calculaSalarioBruto(null, 1500, 8), 0.01);
     }
 }

@@ -2,41 +2,48 @@ package es.iesmz;
 
 public class EmpleadoBR {
 
-    public static float calcularSalarioBruto(TipoEmpleado tipo, float ventaMensual, float horasExtra){
-        if (tipo==null || ventaMensual<0 || horasExtra<0){
+    public static float calculaSalarioBruto(TipoEmpleado tipo, float ventasMes, float horasExtra) {
+
+        if (tipo == null || ventasMes < 0 || horasExtra < 0) {
             return -1;
         }
 
         float salarioBase;
-        if (tipo == TipoEmpleado.vendedor){
-            salarioBase = 1000f;
-        }   else {
-            salarioBase = 1500f;
+
+        if (tipo == TipoEmpleado.vendedor) {
+            salarioBase = 1000;
+        } else {
+            salarioBase = 1500;
         }
 
-        float prima = 0f;
-        if (ventaMensual >= 1500f){
-            prima = 200f;
-        } else if (ventaMensual>=1000f) {
-            prima=100f;
+        float prima = 0;
+
+        if (ventasMes >= 1500) {
+            prima = 200;
+        } else if (ventasMes >= 1000) {
+            prima = 100;
         }
 
-        float pagoHorasExtra = horasExtra * 20f;
+        float pagoHorasExtra = horasExtra * 20;
+
         return salarioBase + prima + pagoHorasExtra;
     }
 
-    public static float calcularSalarioNeto(float salarioBruto){
-        if (salarioBruto<0f){
+
+    public static float calculaSalarioNeto(float salarioBruto) {
+
+        if (salarioBruto < 0) {
             return -1;
         }
 
-        float retencion;
-        if (salarioBruto>=1500f){
-            retencion = 18f;
-        } else if (salarioBruto>=1000f) {
-            retencion = 16f;
-        }   else  retencion = 0f;
+        float retencion = 0;
 
-        return salarioBruto *(1-(retencion/100));
+        if (salarioBruto >= 1500) {
+            retencion = 18;
+        } else if (salarioBruto >= 1000) {
+            retencion = 16;
+        }
+
+        return salarioBruto * (1 - (retencion / 100));
     }
 }
